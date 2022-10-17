@@ -30,11 +30,12 @@ public class Application {
         // consolidated variables array
         IntVar[] vars = new IntVar[]{v1, v2, v3};
 
-        /*  defining operation with condition.
-            condition: sum of all three variables (i.e. v1, v2 and v3) must be equal to constant (i.e.1000)
+        /*  defining operation with condition value.
+            condition: sum of all three variables (i.e. v1, v2 and v3) must be equal to the given condition value (i.e.1000)
          */
-        final int constant = 1000;
-        model.sum(vars, "=", constant).post();
+        final int conditionValue = 1000;
+        final String operation = "="; // operation to be perform (i.e.'=', '<', '>', '<=', '>=')
+        model.sum(vars, operation, conditionValue).post();
 
         // execute the expression
         Solver solver = model.getSolver();
@@ -44,13 +45,17 @@ public class Application {
         int totalSolutionsCount = solutions.size();
         logger.log(Level.INFO, "total solutions {0}", totalSolutionsCount);
 
-        // iterating over solutions for doing more operations
-        solutions.stream().forEach(solution -> {
-            int v1SolutionValue = solution.getIntVal(v1);
-            int v2SolutionValue = solution.getIntVal(v2);
-            int v3SolutionValue = solution.getIntVal(v3);
-            int sumOfSolutionValues = v1SolutionValue + v2SolutionValue + v3SolutionValue;
-            logger.log(Level.INFO, "v1:{0}, v2:{1}, v2:{2} = {3}", new Object[]{v1SolutionValue,v2SolutionValue,v3SolutionValue,sumOfSolutionValues});
-        });
+        if(totalSolutionsCount == 0) {
+            logger.log(Level.WARNING, "No solution(s) found for the given input for LP");
+        } else {
+            // iterating over solutions for doing more operations
+            solutions.stream().forEach(solution -> {
+                int v1SolutionValue = solution.getIntVal(v1);
+                int v2SolutionValue = solution.getIntVal(v2);
+                int v3SolutionValue = solution.getIntVal(v3);
+                int sumOfSolutionValues = v1SolutionValue + v2SolutionValue + v3SolutionValue;
+                logger.log(Level.INFO, "v1:{0}, v2:{1}, v2:{2} = {3}", new Object[]{v1SolutionValue,v2SolutionValue,v3SolutionValue,sumOfSolutionValues});
+            });
+        }
     }
 }
