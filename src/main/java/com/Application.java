@@ -12,11 +12,13 @@ import java.util.logging.Logger;
  * Choco Solver LP Sample demo application
  * */
 public class Application {
+
     Logger logger = Logger.getLogger(this.getClass().toString());
 
     public static void main(String[] args) {
         new Application().begin();
     }
+
     private void begin() {
 
         // define LP model
