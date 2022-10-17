@@ -42,7 +42,7 @@ public class Application {
         // get all feasible solutions
         List<Solution> solutions = solver.findAllSolutions();
         int totalSolutionsCount = solutions.size();
-        logger.log(Level.INFO, "total solutions {0} {1}", new Object[]{totalSolutionsCount, 12});
+        logger.log(Level.INFO, "total solutions {0}", totalSolutionsCount);
 
         // iterating over solutions for doing more operations
         solutions.stream().forEach(solution -> {
