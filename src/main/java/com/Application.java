@@ -26,8 +26,8 @@ public class Application {
 
         // variable space
         IntVar v1 = model.intVar("v1", new int[]{0, 100, 200, 300, 4500, 500});
-        IntVar v2 = model.intVar("v1", new int[]{0, 100, 200, 3000, 400, 500});
-        IntVar v3 = model.intVar("v1", new int[]{0, 400, 700, 300});
+        IntVar v2 = model.intVar("v2", new int[]{0, 100, 200, 3000, 400, 500});
+        IntVar v3 = model.intVar("v3", new int[]{0, 400, 700, 300});
 
         // consolidated variables array
         IntVar[] vars = new IntVar[]{v1, v2, v3};
