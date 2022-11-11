@@ -18,7 +18,6 @@ public class Application {
     public static void main(String[] args) {
         new Application().begin();
     }
-
     private void begin() {
 
         // define LP model
@@ -61,3 +60,5 @@ public class Application {
         }
     }
 }
+
+// change on master - change in branch
